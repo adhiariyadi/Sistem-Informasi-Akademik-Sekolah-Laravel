@@ -31,6 +31,7 @@ Route::patch('/reset/password/update/{id}', 'UserController@update_password')->n
 
 Route::middleware(['auth'])->group(function () {
   Route::get('/', 'HomeController@index')->name('home');
+  Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/jadwal/sekarang', 'JadwalController@jadwalSekarang');
   Route::get('/profile', 'UserController@profile')->name('profile');
   Route::get('/pengaturan/profile', 'UserController@edit_profile')->name('pengaturan.profile');
