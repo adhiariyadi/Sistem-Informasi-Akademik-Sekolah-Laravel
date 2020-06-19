@@ -41,7 +41,7 @@ Web Sistem Informasi Akademik Sekolah yang dibuat oleh <a href="https://github.c
 git clone https://github.com/adhiariyadi/Sistem-Informasi-Akademik-Sekolah-Laravel.git
 cd Sistem-Informasi-Akademik-Sekolah-Laravel
 composer install
-copy .env.example .env
+cp .env.example .env
 ```
 
 2. **Buka `.env` lalu ubah baris berikut sesuai dengan databasemu yang ingin dipakai**
