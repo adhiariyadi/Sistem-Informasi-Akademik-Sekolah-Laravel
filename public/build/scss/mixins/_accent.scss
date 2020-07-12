@@ -1,0 +1,63 @@
+//
+// Mixins: Accent
+//
+
+// Accent Variant
+@mixin accent-variant($name, $color) {
+  .accent-#{$name} {
+    $link-color: $color;
+    $link-hover-color: darken($color, 15%);
+    $pagination-active-bg: $color;
+    $pagination-active-border-color: $color;
+
+    .btn-link,
+    a {
+      color: $link-color;
+
+      @include hover {
+        color: $link-hover-color;
+      }
+    }
+
+    .custom-control-input:checked ~ .custom-control-label {
+      &::before {
+        background: $color;
+        border-color: darken($color, 20%);
+      }
+
+      &::after {
+        $newColor: color-yiq($color);
+        background-image: str-replace($custom-checkbox-indicator-icon-checked, str-replace(#{$custom-control-indicator-checked-color}, '#', '%23'), str-replace(#{$newColor}, '#', '%23'));
+      }
+    }
+
+    .form-control:focus:not(.is-invalid):not(.is-warning):not(.is-valid),
+    .custom-select:focus,
+    .custom-control-input:focus:not(:checked) ~ .custom-control-label::before,
+    .custom-file-input:focus ~ .custom-file-label {
+      border-color: lighten($color, 25%);
+    }
+
+    [class*="sidebar-light-"],
+    &[class*="sidebar-dark-"] {
+        .nav-sidebar .nav-treeview > .nav-item > {
+        .nav-link:not(.active):hover {
+          color: $color;
+        }
+      }
+    }
+    
+    .page-item {
+      &.active .page-link {
+        background-color: $pagination-active-bg;
+        border-color: $pagination-active-border-color;
+      }
+
+      &.disabled .page-link {
+        background-color: $pagination-disabled-bg;
+        border-color: $pagination-disabled-border-color;
+      }
+    }
+  }
+}
+
