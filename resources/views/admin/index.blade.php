@@ -8,7 +8,7 @@
     <div class="col-lg-4 col-6">
         <div class="small-box bg-info">
             <div class="inner">
-                <h3>{{ $jadwal->count() }}</h3>
+                <h3>{{ $jadwal }}</h3>
                 <p>Jadwal</p>
             </div>
             <div class="icon">
@@ -20,7 +20,7 @@
     <div class="col-lg-4 col-6">
         <div class="small-box bg-warning">
             <div class="inner" style="color: #FFFFFF;">
-                <h3>{{ $guru->count() }}</h3>
+                <h3>{{ $guru }}</h3>
                 <p>Guru</p>
             </div>
             <div class="icon">
@@ -32,7 +32,7 @@
     <div class="col-lg-4 col-6">
         <div class="small-box bg-success">
             <div class="inner">
-                <h3>{{ $siswa->count() }}</h3>
+                <h3>{{ $siswa }}</h3>
                 <p>Siswa</p>
             </div>
             <div class="icon">
@@ -44,7 +44,7 @@
     <div class="col-lg-4 col-6">
         <div class="small-box bg-danger">
             <div class="inner">
-                <h3>{{ $kelas->count() }}</h3>
+                <h3>{{ $kelas }}</h3>
                 <p>Kelas</p>
             </div>
             <div class="icon">
@@ -56,7 +56,7 @@
     <div class="col-lg-4 col-6">
         <div class="small-box bg-primary">
             <div class="inner">
-                <h3>{{ $mapel->count() }}</h3>
+                <h3>{{ $mapel }}</h3>
                 <p>Mapel</p>
             </div>
             <div class="icon">
@@ -68,7 +68,7 @@
     <div class="col-lg-4 col-6">
         <div class="small-box bg-secondary">
             <div class="inner">
-                <h3>{{ $user->count() }}</h3>
+                <h3>{{ $user }}</h3>
                 <p>User Registrations</p>
             </div>
             <div class="icon">
@@ -86,7 +86,7 @@
                     </p>
                     <p class="ml-auto d-flex flex-column text-right">
                         <span class="text-success">
-                            <i class="fas fa-arrow-up"></i> {{ $guru->count() }}
+                            <i class="fas fa-arrow-up"></i> {{ $guru }}
                         </span>
                     </p>
                 </div>
@@ -117,7 +117,7 @@
                     </p>
                     <p class="ml-auto d-flex flex-column text-right">
                         <span class="text-success">
-                            <i class="fas fa-arrow-up"></i> {{ $siswa->count() }}
+                            <i class="fas fa-arrow-up"></i> {{ $siswa }}
                         </span>
                     </p>
                 </div>
@@ -148,7 +148,7 @@
                     </p>
                     <p class="ml-auto d-flex flex-column text-right">
                         <span class="text-success">
-                            <i class="fas fa-arrow-up"></i> {{ $kelas->count() }}
+                            <i class="fas fa-arrow-up"></i> {{ $kelas }}
                         </span>
                     </p>
                 </div>
@@ -176,277 +176,89 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex">
-                    <p class="d-flex flex-column">
-                        <span class="text-bold text-lg">Siswa / Kelas</span>
-                    </p>
-                    <p class="ml-auto d-flex flex-column text-right">
-                        <span class="text-success">
-                            <i class="fas fa-arrow-up"></i> {{ $siswa->count() }}
-                        </span>
-                    </p>
-                </div>
-                <div class="position-relative mb-4">
-                    <canvas id="sales-chart" height="300"></canvas>
-                </div>
-                <div class="d-flex flex-row justify-content-end">
-                    <span class="mr-4">
-                        <i class="fas fa-square text-primary"></i> Kelas X
-                    </span>
-                    <span class="mr-4">
-                        <i class="fas fa-square text-success"></i> Kelas XI
-                    </span>
-                    <span class="mr-4">
-                        <i class="fas fa-square text-danger"></i> Kelas XII
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 @section('script')
     <script type="text/javascript">
         $(document).ready(function () {
             'use strict'
 
-            var ticksStyle = {
-                fontColor: '#495057',
-                fontStyle: 'bold'
-            }
-
-            var mode      = 'index'
-            var intersect = true
-
-            var $salesChart = $('#sales-chart')
-            var salesChart  = new Chart($salesChart, {
-                type   : 'bar',
-                data   : {
-                labels  : [
-                    'BKP A',
-                    'BKP B',
-                    'DPIB A',
-                    'DPIB B',
-                    'DPIB C',
-                    'EI A',
-                    'EI B',
-                    'OI A',
-                    'OI B',
-                    'TPM A',
-                    'TPM B',
-                    'TPM C',
-                    'TPM D',
-                    'TBSM A',
-                    'TBSM B',
-                    'TPL A',
-                    'TPL B',
-                    'RPL A',
-                    'RPL B',
-                    'RPL C',
+            var pieChartCanvasGuru = $('#pieChartGuru').get(0).getContext('2d')
+            var pieDataGuru        = {
+                labels: [
+                    'Laki-laki', 
+                    'Perempuan',
                 ],
                 datasets: [
                     {
-                        backgroundColor: '#007BFF',
-                        borderColor    : '#007BFF',
-                        data           : [
-                            {{ $bkpa1->count() }},
-                            {{ $bkpb1->count() }},
-                            {{ $dpiba1->count() }},
-                            {{ $dpibb1->count() }},
-                            {{ $dpibc1->count() }},
-                            {{ $eia1->count() }},
-                            {{ $eib1->count() }},
-                            {{ $oia1->count() }},
-                            {{ $oib1->count() }},
-                            {{ $tpma1->count() }},
-                            {{ $tpmb1->count() }},
-                            {{ $tpmc1->count() }},
-                            {{ $tpmd1->count() }},
-                            {{ $tbsma1->count() }},
-                            {{ $tbsmb1->count() }},
-                            {{ $lasa1->count() }},
-                            {{ $lasb1->count() }},
-                            {{ $rpla1->count() }},
-                            {{ $rplb1->count() }},
-                            {{ $rplc1->count() }}
-                        ]
-                    },
-                    {
-                        backgroundColor: '#28A745',
-                        borderColor    : '#28A745',
-                        data           : [
-                            {{ $bkpa2->count() }},
-                            {{ $bkpb2->count() }},
-                            {{ $dpiba2->count() }},
-                            {{ $dpibb2->count() }},
-                            {{ $dpibc2->count() }},
-                            {{ $eia2->count() }},
-                            {{ $eib2->count() }},
-                            {{ $oia2->count() }},
-                            {{ $oib2->count() }},
-                            {{ $tpma2->count() }},
-                            {{ $tpmb2->count() }},
-                            {{ $tpmc2->count() }},
-                            {{ $tpmd2->count() }},
-                            {{ $tbsma2->count() }},
-                            {{ $tbsmb2->count() }},
-                            {{ $lasa2->count() }},
-                            {{ $lasb2->count() }},
-                            {{ $rpla2->count() }},
-                            {{ $rplb2->count() }},
-                            {{ $rplc2->count() }}
-                        ]
-                    },
-                    {
-                        backgroundColor: '#DC3545',
-                        borderColor    : '#DC3545',
-                        data           : [
-                            {{ $bkpa3->count() }},
-                            {{ $bkpb3->count() }},
-                            {{ $dpiba3->count() }},
-                            {{ $dpibb3->count() }},
-                            {{ $dpibc3->count() }},
-                            {{ $eia3->count() }},
-                            {{ $eib3->count() }},
-                            {{ $oia3->count() }},
-                            {{ $oib3->count() }},
-                            {{ $tpma3->count() }},
-                            {{ $tpmb3->count() }},
-                            {{ $tpmc3->count() }},
-                            {{ $tpmd3->count() }},
-                            {{ $tbsma3->count() }},
-                            {{ $tbsmb3->count() }},
-                            {{ $lasa3->count() }},
-                            {{ $lasb3->count() }},
-                            {{ $rpla3->count() }},
-                            {{ $rplb3->count() }},
-                            {{ $rplc3->count() }}
-                        ]
+                    data: [{{ $gurulk }}, {{ $gurupr }}],
+                    backgroundColor : ['#007BFF', '#DC3545'],
                     }
                 ]
-                },
-                options: {
-                maintainAspectRatio: false,
-                tooltips           : {
-                    mode     : mode,
-                    intersect: intersect
-                },
-                hover              : {
-                    mode     : mode,
-                    intersect: intersect
-                },
-                legend             : {
-                    display: false
-                },
-                scales             : {
-                    yAxes: [{
-                    gridLines: {
-                        display      : true,
-                        lineWidth    : '4px',
-                        color        : 'rgba(0, 0, 0, .2)',
-                        zeroLineColor: 'transparent'
-                    },
-                    ticks    : $.extend({
-                        beginAtZero: true,
-
-                        callback: function (value, index, values) {
-                            return value
-                        }
-                    }, ticksStyle)
-                    }],
-                    xAxes: [{
-                    display  : true,
-                    gridLines: {
-                        display: false
-                    },
-                    ticks    : ticksStyle
-                    }]
-                }
-                }
-            })
-
-            var pieChartCanvasGuru = $('#pieChartGuru').get(0).getContext('2d')
-            var pieDataGuru        = {
-            labels: [
-                'Laki-laki', 
-                'Perempuan',
-            ],
-            datasets: [
-                {
-                data: [{{ $gurulk->count() }}, {{ $gurupr->count() }}],
-                backgroundColor : ['#007BFF', '#DC3545'],
-                }
-            ]
             }
             var pieOptions     = {
-            legend: {
-                display: false
+                legend: {
+                    display: false
+                }
             }
-            }
-
             var pieChart = new Chart(pieChartCanvasGuru, {
-            type: 'doughnut',
-            data: pieDataGuru,
-            options: pieOptions      
+                type: 'doughnut',
+                data: pieDataGuru,
+                options: pieOptions      
             })
 
             var pieChartCanvasSiswa = $('#pieChartSiswa').get(0).getContext('2d')
             var pieDataSiswa        = {
-            labels: [
-                'Laki-laki', 
-                'Perempuan',
-            ],
-            datasets: [
-                {
-                data: [{{ $siswalk->count() }}, {{ $siswapr->count() }}],
-                backgroundColor : ['#007BFF', '#DC3545'],
-                }
-            ]
+                labels: [
+                    'Laki-laki', 
+                    'Perempuan',
+                ],
+                datasets: [
+                    {
+                    data: [{{ $siswalk }}, {{ $siswapr }}],
+                    backgroundColor : ['#007BFF', '#DC3545'],
+                    }
+                ]
             }
             var pieOptions     = {
-            legend: {
-                display: false
+                legend: {
+                    display: false
+                }
             }
-            }
-
             var pieChart = new Chart(pieChartCanvasSiswa, {
-            type: 'doughnut',
-            data: pieDataSiswa,
-            options: pieOptions      
+                type: 'doughnut',
+                data: pieDataSiswa,
+                options: pieOptions      
             })
 
             
             var pieChartCanvasPaket = $('#pieChartPaket').get(0).getContext('2d')
             var pieDataPaket        = {
-            labels: [
-                'Bisnis kontruksi dan Properti',
-                'Desain Permodelan dan Informasi Bangunan',
-                'Elektronika Industri',
-                'Otomasi Industri',
-                'Teknik dan Bisnis Sepeda Motor',
-                'Rekayasa Perangkat Lunak',
-                'Teknik Pemesinan',
-                'Teknik Pengelasan',
-            ],
-            datasets: [
-                {
-                data: [{{ $bkp->count() }}, {{ $dpib->count() }}, {{ $ei->count() }}, {{ $oi->count() }}, {{ $tbsm->count() }}, {{ $rpl->count() }}, {{ $tpm->count() }}, {{ $las->count() }}],
-                backgroundColor : ['#d4c148', '#ba6906', '#ff990a', '#00a352', '#2cabe6', '#999999', '#0b2e75', '#7980f7'],
-                }
-            ]
+                labels: [
+                    'Bisnis kontruksi dan Properti',
+                    'Desain Permodelan dan Informasi Bangunan',
+                    'Elektronika Industri',
+                    'Otomasi Industri',
+                    'Teknik dan Bisnis Sepeda Motor',
+                    'Rekayasa Perangkat Lunak',
+                    'Teknik Pemesinan',
+                    'Teknik Pengelasan',
+                ],
+                datasets: [
+                    {
+                    data: [{{ $bkp }}, {{ $dpib }}, {{ $ei }}, {{ $oi }}, {{ $tbsm }}, {{ $rpl }}, {{ $tpm }}, {{ $las }}],
+                    backgroundColor : ['#d4c148', '#ba6906', '#ff990a', '#00a352', '#2cabe6', '#999999', '#0b2e75', '#7980f7'],
+                    }
+                ]
             }
             var pieOptions     = {
-            legend: {
-                display: false
+                legend: {
+                    display: false
+                }
             }
-            }
-            
             var pieChart = new Chart(pieChartCanvasPaket, {
-            type: 'doughnut',
-            data: pieDataPaket,
-            options: pieOptions      
+                type: 'doughnut',
+                data: pieDataPaket,
+                options: pieOptions      
             })
         })
         

@@ -101,9 +101,7 @@
         </div>
         <div class="card-body">
           <div class="tab-content p-0">
-            @foreach ($pengumuman as $data)
-              {!! $data->isi !!}
-            @endforeach
+            {!! $pengumuman->isi !!}
           </div>
         </div>
       </div>
