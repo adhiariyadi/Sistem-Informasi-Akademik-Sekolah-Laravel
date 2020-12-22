@@ -57,7 +57,7 @@ class GuruController extends Controller
             'jk' => 'required'
         ]);
 
-        if ($request->foto == true) {
+        if ($request->foto) {
             $foto = $request->foto;
             $new_foto = date('s' . 'i' . 'H' . 'd' . 'm' . 'Y') . "_" . $foto->getClientOriginalName();
             Guru::create([
@@ -140,7 +140,7 @@ class GuruController extends Controller
 
         $guru = Guru::findorfail($id);
         $user = User::where('id_card', $guru->id_card)->first();
-        if ($user == true) {
+        if ($user) {
             $user_data = [
                 'name' => $request->nama_guru
             ];

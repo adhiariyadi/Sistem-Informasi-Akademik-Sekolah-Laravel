@@ -95,13 +95,13 @@
                                     <td class="ctr">{{ $loop->iteration }}</td>
                                     <td>
                                         {{ $data->nama_siswa }}
-                                        @if ($data->sikap($data->id)['id'] == true)
+                                        @if ($data->sikap($data->id) && $data->sikap($data->id)['id'])
                                             <input type="hidden" name="sikap_id" class="sikap_id_{{$data->id}}" value="{{ $data->sikap($data->id)['id'] }}">
                                         @else
                                             <input type="hidden" name="sikap_id" class="sikap_id_{{$data->id}}" value="">
                                         @endif
                                     </td>
-                                    @if ($data->sikap($data->id)['sikap_1'] == true)
+                                    @if ($data->sikap($data->id) && $data->sikap($data->id)['sikap_1'])
                                         <td class="ctr">
                                             <div class="text-center">{{ $data->sikap($data->id)['sikap_1'] }}</div>
                                             <input type="hidden" name="sikap_1" class="sikap_1_{{$data->id}}" value="{{ $data->sikap($data->id)['sikap_1'] }}">
@@ -109,7 +109,7 @@
                                     @else
                                         <td class="ctr"><input type="text" name="sikap_1" maxlength="1" onkeypress="return sikap(event)" style="margin: auto;" class="form-control text-center sikap_1_{{$data->id}}" autocomplete="off" autofocus></td>
                                     @endif
-                                    @if ($data->sikap($data->id)['sikap_2'] == true)
+                                    @if ($data->sikap($data->id) && $data->sikap($data->id)['sikap_2'])
                                         <td class="ctr">
                                             <div class="text-center">{{ $data->sikap($data->id)['sikap_2'] }}</div>
                                             <input type="hidden" name="sikap_2" class="sikap_2_{{$data->id}}" value="{{ $data->sikap($data->id)['sikap_2'] }}">
@@ -117,7 +117,7 @@
                                     @else
                                         <td class="ctr"><input type="text" name="sikap_2" maxlength="1" onkeypress="return sikap(event)" style="margin: auto;" class="form-control text-center sikap_2_{{$data->id}}" autocomplete="off" autofocus></td>
                                     @endif
-                                    @if ($data->sikap($data->id)['sikap_3'] == true)
+                                    @if ($data->sikap($data->id) && $data->sikap($data->id)['sikap_3'])
                                         <td class="ctr">
                                             <div class="text-center">{{ $data->sikap($data->id)['sikap_3'] }}</div>
                                             <input type="hidden" name="sikap_3" class="sikap_3_{{$data->id}}" value="{{ $data->sikap($data->id)['sikap_3'] }}">
@@ -125,7 +125,7 @@
                                     @else
                                         <td class="ctr"><input type="text" name="sikap_3" maxlength="1" onkeypress="return sikap(event)" style="margin: auto;" class="form-control text-center sikap_3_{{$data->id}}" autocomplete="off" autofocus></td>
                                     @endif
-                                    @if ($data->sikap($data->id)['sikap_1'] == true && $data->sikap($data->id)['sikap_2'] == true && $data->sikap($data->id)['sikap_3'] == true)
+                                    @if ($data->sikap($data->id) && $data->sikap($data->id)['sikap_1'] && $data->sikap($data->id)['sikap_2'] && $data->sikap($data->id)['sikap_3'])
                                         <td class="ctr"><i class="fas fa-check" style="font-weight:bold;"></i></td>
                                     @else
                                         <td class="ctr sub_{{$data->id}}"><button type="button" id="submit-{{$data->id}}" class="btn btn-default btn_click" data-id="{{$data->id}}"><i class="nav-icon fas fa-save"></i></button></td>

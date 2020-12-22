@@ -94,14 +94,14 @@
                                     <td class="ctr">{{ $loop->iteration }}</td>
                                     <td>
                                         {{ $data->nama_siswa }}
-                                        @if ($data->ulangan($data->id)['id'] == true)
+                                        @if ($data->ulangan($data->id) && $data->ulangan($data->id)['id'])
                                             <input type="hidden" name="ulangan_id" class="ulangan_id_{{$data->id}}" value="{{ $data->ulangan($data->id)->id }}">
                                         @else
                                             <input type="hidden" name="ulangan_id" class="ulangan_id_{{$data->id}}" value="">
                                         @endif
                                     </td>
                                     <td class="ctr">
-                                        @if ($data->ulangan($data->id)['ulha_1'] == true)
+                                        @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_1'])
                                             <div class="text-center">{{ $data->ulangan($data->id)['ulha_1'] }}</div>
                                             <input type="hidden" name="ulha_1" class="ulha_1_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_1'] }}">
                                         @else
@@ -109,7 +109,7 @@
                                         @endif
                                     </td>
                                     <td class="ctr">
-                                        @if ($data->ulangan($data->id)['ulha_2'] == true)
+                                        @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_2'])
                                             <div class="text-center">{{ $data->ulangan($data->id)['ulha_2'] }}</div>
                                             <input type="hidden" name="ulha_2" class="ulha_2_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_2'] }}">
                                         @else
@@ -117,7 +117,7 @@
                                         @endif
                                     </td>
                                     <td class="ctr">
-                                        @if ($data->ulangan($data->id)['uts'] == true)
+                                        @if ($data->ulangan($data->id) && $data->ulangan($data->id)['uts'])
                                             <div class="text-center">{{ $data->ulangan($data->id)['uts'] }}</div>
                                             <input type="hidden" name="uts" class="uts_{{$data->id}}" value="{{ $data->ulangan($data->id)['uts'] }}">
                                         @else
@@ -125,7 +125,7 @@
                                         @endif
                                     </td>
                                     <td class="ctr">
-                                        @if ($data->ulangan($data->id)['ulha_3'] == true)
+                                        @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_3'])
                                             <div class="text-center">{{ $data->ulangan($data->id)['ulha_3'] }}</div>
                                             <input type="hidden" name="ulha_3" class="ulha_3_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_3'] }}">
                                         @else
@@ -133,7 +133,7 @@
                                         @endif
                                     </td>
                                     <td class="ctr">
-                                        @if ($data->ulangan($data->id)['uas'] == true)
+                                        @if ($data->ulangan($data->id) && $data->ulangan($data->id)['uas'])
                                             <div class="text-center">{{ $data->ulangan($data->id)['uas'] }}</div>
                                             <input type="hidden" name="uas" class="uas_{{$data->id}}" value="{{ $data->ulangan($data->id)['uas'] }}">
                                         @else
@@ -141,7 +141,7 @@
                                         @endif
                                     </td>
                                     <td class="ctr sub_{{$data->id}}">
-                                        @if ($data->nilai($data->id) == true)
+                                        @if ($data->nilai($data->id))
                                             <i class="fas fa-check" style="font-weight:bold;"></i>
                                         @else
                                             <button type="button" id="submit-{{$data->id}}" class="btn btn-default btn_click" data-id="{{$data->id}}"><i class="nav-icon fas fa-save"></i></button>

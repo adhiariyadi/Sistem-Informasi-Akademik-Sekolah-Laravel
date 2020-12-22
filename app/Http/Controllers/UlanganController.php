@@ -52,7 +52,7 @@ class UlanganController extends Controller
         $cekJadwal = Jadwal::where('guru_id', $guru->id)->where('kelas_id', $request->kelas_id)->count();
 
         if ($cekJadwal >= 1) {
-            if ($request->ulha_1 == true && $request->ulha_2 == true && $request->uts == true && $request->ulha_3 == true && $request->uas == true) {
+            if ($request->ulha_1 && $request->ulha_2 && $request->uts && $request->ulha_3 && $request->uas) {
                 $nilai = ($request->ulha_1 + $request->ulha_2 + $request->uts + $request->ulha_3 + (2 * $request->uas)) / 6;
                 $nilai = (int) $nilai;
                 $deskripsi = Nilai::where('guru_id', $request->guru_id)->first();

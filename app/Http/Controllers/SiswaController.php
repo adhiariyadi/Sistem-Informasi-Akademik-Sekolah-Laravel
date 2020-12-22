@@ -53,7 +53,7 @@ class SiswaController extends Controller
             'kelas_id' => 'required'
         ]);
 
-        if ($request->foto == true) {
+        if ($request->foto) {
             $foto = $request->foto;
             $new_foto = date('s' . 'i' . 'H' . 'd' . 'm' . 'Y') . "_" . $foto->getClientOriginalName();
             Siswa::create([
@@ -134,7 +134,7 @@ class SiswaController extends Controller
 
         $siswa = Siswa::findorfail($id);
         $user = User::where('no_induk', $siswa->no_induk)->first();
-        if ($user == true) {
+        if ($user) {
             $user_data = [
                 'name' => $request->nama_siswa
             ];

@@ -70,7 +70,7 @@
                 <div class="row">
                     <div class="col-12 mb-3">
                         <h4 class="mb-3">A. Sikap</h4>
-                        @if ($Spai == true && $Sppkn == true)
+                        @if ($Spai && $Sppkn)
                             @php
                                 $sikap = ((($Spai->sikap_1 + $Spai->sikap_2 + $Spai->sikap_3) / 3) + (($Sppkn->sikap_1 + $Sppkn->sikap_2 + $Sppkn->sikap_3) / 3)) / 2;
                                 $sikap = (int) $sikap;

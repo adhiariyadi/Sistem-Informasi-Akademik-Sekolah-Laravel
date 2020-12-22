@@ -98,7 +98,7 @@
                                 <tr>
                                     <td class="ctr">{{ $loop->iteration }}</td>
                                     <td>{{ $data->nama_siswa }}</td>
-                                    @if ($data->nilai($data->id) == true)
+                                    @if ($data->nilai($data->id))
                                         <td class="ctr">
                                             <input type="hidden" class="rapot_{{$data->id}}" value="{{ $data->nilai($data->id)->id }}">
                                             <div class="text-center">{{ $data->nilai($data->id)->p_nilai }}</div>
@@ -109,7 +109,7 @@
                                         <td class="ctr">
                                             <textarea class="form-control swal2-textarea textarea-rapot" cols="50" rows="5" disabled>{{ $data->nilai($data->id)->p_deskripsi }}</textarea>
                                         </td>
-                                        @if ($data->nilai($data->id)->p_nilai == true && $data->nilai($data->id)->k_nilai == true)
+                                        @if ($data->nilai($data->id)->p_nilai && $data->nilai($data->id)->k_nilai)
                                             <td class="ctr">
                                                 <div class="ka_{{$data->id}} text-center">{{ $data->nilai($data->id)->k_nilai }}</div> 
                                             </td>

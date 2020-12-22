@@ -243,7 +243,7 @@ class UserController extends Controller
             $guru = Guru::where('id_card', Auth::user()->id_card)->first();
             $user = User::where('id_card', Auth::user()->id_card)->first();
             dd($user);
-            if ($user == true) {
+            if ($user) {
                 $user_data = [
                     'name' => $request->name
                 ];
@@ -268,7 +268,7 @@ class UserController extends Controller
             ]);
             $siswa = Siswa::where('no_induk', Auth::user()->no_induk)->first();
             $user = User::where('no_induk', Auth::user()->no_induk)->first();
-            if ($user == true) {
+            if ($user) {
                 $user_data = [
                     'name' => $request->name
                 ];
@@ -370,7 +370,7 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed'
         ]);
         $user = User::findorfail(Auth::user()->id);
-        if ($request->password_lama == true) {
+        if ($request->password_lama) {
             if (Hash::check($request->password_lama, $user->password)) {
                 if ($request->password_lama == $request->password) {
                     return redirect()->back()->with('error', 'Maaf password yang anda masukkan sama!');
@@ -404,7 +404,7 @@ class UserController extends Controller
         $user = User::where('email', $request->email)->first();
         $countUser = User::where('email', $request->email)->count();
         if ($countUser >= 1) {
-            if (Hash::check($request->password, $user->password) == true) {
+            if (Hash::check($request->password, $user->password)) {
                 return response()->json(['success' => 'Password Anda Benar']);
             } else {
                 return response()->json(['error' => 'Maaf user not found!']);
