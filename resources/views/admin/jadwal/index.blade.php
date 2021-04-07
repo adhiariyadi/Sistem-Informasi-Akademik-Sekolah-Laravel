@@ -150,11 +150,11 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="jam_mulai">Jam Mulai</label>
-                  <input type='time' id="jam_mulai" name='jam_mulai' class="form-control @error('jam_mulai') is-invalid @enderror" placeholder='JJ:mm:dd'>
+                  <input type='text' id="jam_mulai" name='jam_mulai' class="form-control @error('jam_mulai') is-invalid @enderror jam_mulai" placeholder='JJ:mm:dd'>
                 </div>
                 <div class="form-group">
                   <label for="jam_selesai">Jam Selesai</label>
-                  <input type='time' name='jam_selesai' class="form-control @error('jam_selesai') is-invalid @enderror" placeholder='JJ:mm:dd'>
+                  <input type='text' id="jam_selesai" name='jam_selesai' class="form-control @error('jam_selesai') is-invalid @enderror" placeholder='JJ:mm:dd'>
                 </div>
                 <div class="form-group">
                   <label for="ruang_id">Ruang Kelas</label>
@@ -182,5 +182,9 @@
         $("#MasterData").addClass("active");
         $("#liMasterData").addClass("menu-open");
         $("#DataJadwal").addClass("active");
+        $("#jam_mulai,#jam_selesai").timepicker({
+            timeFormat: 'HH:mm',
+            defaultTime: '07:00',
+        });
     </script>
 @endsection
