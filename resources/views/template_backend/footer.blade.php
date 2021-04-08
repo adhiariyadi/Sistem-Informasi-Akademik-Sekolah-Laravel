@@ -1,4 +1,4 @@
-    <footer class="main-footer">
+<footer class="main-footer">
         <marquee>
             <strong>Copyright &copy; <script>document.write(new Date().getFullYear());</script> &diams; <a href="http://smkn1jenpo.sch.id/">SMK Negeri 1 Jenangan Ponorogo</a>. </strong>
         </marquee>
@@ -76,6 +76,7 @@
 <!-- bs-custom-file-input -->
 <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
