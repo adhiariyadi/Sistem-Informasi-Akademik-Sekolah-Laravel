@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Nilai;
 use App\Guru;
+use App\Nilai;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class NilaiController extends Controller
 {

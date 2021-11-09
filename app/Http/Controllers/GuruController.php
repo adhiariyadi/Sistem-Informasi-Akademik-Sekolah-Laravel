@@ -16,6 +16,7 @@ use App\Exports\GuruExport;
 use App\Imports\GuruImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Nilai;
 
 class GuruController extends Controller
 {
@@ -59,39 +60,33 @@ class GuruController extends Controller
 
         if ($request->foto) {
             $foto = $request->foto;
-            $new_foto = date('s' . 'i' . 'H' . 'd' . 'm' . 'Y') . "_" . $foto->getClientOriginalName();
-            Guru::create([
-                'id_card' => $request->id_card,
-                'nip' => $request->nip,
-                'nama_guru' => $request->nama_guru,
-                'mapel_id' => $request->mapel_id,
-                'kode' => $request->kode,
-                'jk' => $request->jk,
-                'telp' => $request->telp,
-                'tmp_lahir' => $request->tmp_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'foto' => 'uploads/guru/' . $new_foto
-            ]);
+            $new_foto = date('siHdmY') . "_" . $foto->getClientOriginalName();
             $foto->move('uploads/guru/', $new_foto);
+            $nameFoto = 'uploads/guru/' . $new_foto;
         } else {
             if ($request->jk == 'L') {
                 $foto = 'uploads/guru/35251431012020_male.jpg';
             } else {
                 $foto = 'uploads/guru/23171022042020_female.jpg';
             }
-            Guru::create([
-                'id_card' => $request->id_card,
-                'nip' => $request->nip,
-                'nama_guru' => $request->nama_guru,
-                'mapel_id' => $request->mapel_id,
-                'kode' => $request->kode,
-                'jk' => $request->jk,
-                'telp' => $request->telp,
-                'tmp_lahir' => $request->tmp_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'foto' => $foto
-            ]);
         }
+
+        $guru = Guru::create([
+            'id_card' => $request->id_card,
+            'nip' => $request->nip,
+            'nama_guru' => $request->nama_guru,
+            'mapel_id' => $request->mapel_id,
+            'kode' => $request->kode,
+            'jk' => $request->jk,
+            'telp' => $request->telp,
+            'tmp_lahir' => $request->tmp_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'foto' => $nameFoto
+        ]);
+
+        Nilai::create([
+            'guru_id' => $guru->id
+        ]);
 
         return redirect()->back()->with('success', 'Berhasil menambahkan data guru baru!');
     }

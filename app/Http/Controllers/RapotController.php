@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Nilai;
 use App\Guru;
-use App\Siswa;
 use App\Kelas;
 use App\Mapel;
-use App\Jadwal;
+use App\Nilai;
 use App\Rapot;
 use App\Sikap;
+use App\Siswa;
+use App\Jadwal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Str;
-use DB;
 
 class RapotController extends Controller
 {
