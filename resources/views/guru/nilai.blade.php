@@ -53,7 +53,6 @@
                             <textarea class="form-control" required name="predikat_d" id="predikat_d" rows="4">{{ $nilai->deskripsi_d }}</textarea>
                         </div>
                     </div>
-                    @endif
                 </div>
             </div>
             <!-- /.card-body -->

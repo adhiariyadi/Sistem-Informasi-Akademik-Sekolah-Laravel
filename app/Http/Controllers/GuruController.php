@@ -65,9 +65,9 @@ class GuruController extends Controller
             $nameFoto = 'uploads/guru/' . $new_foto;
         } else {
             if ($request->jk == 'L') {
-                $foto = 'uploads/guru/35251431012020_male.jpg';
+                $nameFoto = 'uploads/guru/35251431012020_male.jpg';
             } else {
-                $foto = 'uploads/guru/23171022042020_female.jpg';
+                $nameFoto = 'uploads/guru/23171022042020_female.jpg';
             }
         }
 
