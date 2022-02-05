@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Siswa;
-use App\Kelas;
-use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Str;
 use PDF;
+use App\User;
+use App\Kelas;
+use App\Siswa;
 use App\Exports\SiswaExport;
 use App\Imports\SiswaImport;
-use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Crypt;
 
 class SiswaController extends Controller
 {
@@ -55,37 +53,28 @@ class SiswaController extends Controller
 
         if ($request->foto) {
             $foto = $request->foto;
-            $new_foto = date('s' . 'i' . 'H' . 'd' . 'm' . 'Y') . "_" . $foto->getClientOriginalName();
-            Siswa::create([
-                'no_induk' => $request->no_induk,
-                'nis' => $request->nis,
-                'nama_siswa' => $request->nama_siswa,
-                'jk' => $request->jk,
-                'kelas_id' => $request->kelas_id,
-                'telp' => $request->telp,
-                'tmp_lahir' => $request->tmp_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'foto' => 'uploads/siswa/' . $new_foto
-            ]);
+            $new_foto = date('siHdmY') . "_" . $foto->getClientOriginalName();
             $foto->move('uploads/siswa/', $new_foto);
+            $nameFoto = 'uploads/siswa/' . $new_foto;
         } else {
             if ($request->jk == 'L') {
-                $foto = 'uploads/siswa/52471919042020_male.jpg';
+                $nameFoto = 'uploads/siswa/52471919042020_male.jpg';
             } else {
-                $foto = 'uploads/siswa/50271431012020_female.jpg';
+                $nameFoto = 'uploads/siswa/50271431012020_female.jpg';
             }
-            Guru::create([
-                'no_induk' => $request->no_induk,
-                'nis' => $request->nis,
-                'nama_siswa' => $request->nama_siswa,
-                'jk' => $request->jk,
-                'kelas_id' => $request->kelas_id,
-                'telp' => $request->telp,
-                'tmp_lahir' => $request->tmp_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'foto' => $foto
-            ]);
         }
+
+        Siswa::create([
+            'no_induk' => $request->no_induk,
+            'nis' => $request->nis,
+            'nama_siswa' => $request->nama_siswa,
+            'jk' => $request->jk,
+            'kelas_id' => $request->kelas_id,
+            'telp' => $request->telp,
+            'tmp_lahir' => $request->tmp_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'foto' => $nameFoto
+        ]);
 
         return redirect()->back()->with('success', 'Berhasil menambahkan data siswa baru!');
     }

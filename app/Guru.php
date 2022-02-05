@@ -16,11 +16,5 @@ class Guru extends Model
         return $this->belongsTo('App\Mapel')->withDefault();
     }
 
-    public function dsk($id)
-    {
-        $dsk = Nilai::where('guru_id', $id)->first();
-        return $dsk;
-    }
-
     protected $table = 'guru';
 }

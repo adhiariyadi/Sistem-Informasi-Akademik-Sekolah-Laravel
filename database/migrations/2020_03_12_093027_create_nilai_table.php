@@ -16,11 +16,11 @@ class CreateNilaiTable extends Migration
         Schema::create('nilai', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('guru_id');
-            $table->integer('kkm');
-            $table->text('deskripsi_a');
-            $table->text('deskripsi_b');
-            $table->text('deskripsi_c');
-            $table->text('deskripsi_d');
+            $table->integer('kkm')->default(70);
+            $table->text('deskripsi_a')->nullable();
+            $table->text('deskripsi_b')->nullable();
+            $table->text('deskripsi_c')->nullable();
+            $table->text('deskripsi_d')->nullable();
             $table->timestamps();
         });
     }
