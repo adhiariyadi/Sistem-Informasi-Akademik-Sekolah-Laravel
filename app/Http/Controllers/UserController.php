@@ -234,37 +234,42 @@ class UserController extends Controller
 
     public function ubah_profile(Request $request)
     {
-        if ($request->role == 'Guru') {
+        if (Auth::user()->role == 'Guru') {
             $this->validate($request, [
-                'nama_guru' => 'required',
-                'mapel_id' => 'required',
-                'jk' => 'required',
+                'name'      => 'required',
+                'mapel_id'  => 'required',
+                'jk'        => 'required',
+                'telp'      => 'required',
+                'tmp_lahir' => 'required',
+                'tgl_lahir' => 'required',
             ]);
             $guru = Guru::where('id_card', Auth::user()->id_card)->first();
             $user = User::where('id_card', Auth::user()->id_card)->first();
-            dd($user);
             if ($user) {
                 $user_data = [
                     'name' => $request->name
                 ];
                 $user->update($user_data);
-            } else {
             }
             $guru_data = [
                 'nama_guru' => $request->name,
-                'mapel_id' => $request->mapel_id,
-                'jk' => $request->jk,
-                'telp' => $request->telp,
+                'mapel_id'  => $request->mapel_id,
+                'jk'        => $request->jk,
+                'telp'      => $request->telp,
                 'tmp_lahir' => $request->tmp_lahir,
                 'tgl_lahir' => $request->tgl_lahir
             ];
             $guru->update($guru_data);
             return redirect()->route('profile')->with('success', 'Profile anda berhasil diperbarui!');
-        } elseif ($request->role == 'Siswa') {
+        } elseif (Auth::user()->role == 'Siswa') {
             $this->validate($request, [
-                'nama_siswa' => 'required',
-                'jk' => 'required',
-                'kelas_id' => 'required'
+                'name'      => 'required',
+                'jk'        => 'required',
+                'kelas_id'  => 'required',
+                'nis'       => 'required',
+                'telp'      => 'required',
+                'tmp_lahir' => 'required',
+                'tgl_lahir' => 'required',
             ]);
             $siswa = Siswa::where('no_induk', Auth::user()->no_induk)->first();
             $user = User::where('no_induk', Auth::user()->no_induk)->first();
@@ -273,16 +278,15 @@ class UserController extends Controller
                     'name' => $request->name
                 ];
                 $user->update($user_data);
-            } else {
             }
             $siswa_data = [
-                'nis' => $request->nis,
+                'nis'        => $request->nis,
                 'nama_siswa' => $request->name,
-                'jk' => $request->jk,
-                'kelas_id' => $request->kelas_id,
-                'telp' => $request->telp,
-                'tmp_lahir' => $request->tmp_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
+                'jk'         => $request->jk,
+                'kelas_id'   => $request->kelas_id,
+                'telp'       => $request->telp,
+                'tmp_lahir'  => $request->tmp_lahir,
+                'tgl_lahir'  => $request->tgl_lahir,
             ];
             $siswa->update($siswa_data);
             return redirect()->route('profile')->with('success', 'Profile anda berhasil diperbarui!');
