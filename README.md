@@ -47,6 +47,8 @@ cp .env.example .env
 2. **Buka `.env` lalu ubah baris berikut sesuai dengan databasemu yang ingin dipakai**
 
 ```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=root
